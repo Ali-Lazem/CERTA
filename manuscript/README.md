@@ -39,6 +39,3 @@ python src/si_tables.py    # -> si_tables.tex
 cp si_tables.tex manuscript/
 ```
 
-## Before submission
-
-Replace the repository-URL placeholder in `main.tex` (data/code availability statement) with the public repository link.
