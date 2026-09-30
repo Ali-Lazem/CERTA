@@ -1,0 +1,49 @@
+% =====================================================================================
+% Availability statements for CERTA (Nature style).
+% Placeholders to fill before submission:
+%   <GITHUB-URL>      e.g. https://github.com/USERNAME/certa
+%   <HF-COLLECTION>   e.g. https://huggingface.co/collections/lazem/<collection-slug>
+% Cite keys already in the bibliography: zhao2023large (PMC-Patients),
+% li2016bc5cdr (BC5CDR-Disease), dogan2014ncbi (NCBI-Disease),
+% dettmers2023qlora (NF4/QLoRA), dettmers2022llmint8 (LLM.int8()).
+% =====================================================================================
+
+\section*{Code availability}
+
+The CERTA reference implementation is openly available at \url{<GITHUB-URL>}. It provides the complete
+finite-sample certification procedure, comprising Learn-then-Test calibration with one-sided
+Clopper--Pearson upper bounds and a Bonferroni correction across the threshold grid, the class-conditional
+(Mondrian) extension with joint risk control across decision classes, the threshold-calibration routine,
+and the certify-or-escalate serving policy. It also includes the full analysis and figure-generation
+pipeline, which regenerates every quantitative result, table and figure in the main text and the
+Supplementary Information directly from the recorded per-decision data, with no model inference required.
+All dependency versions are pinned (an \texttt{environment.yml} and a \texttt{requirements-lock.txt}), and
+the repository is tagged with the exact commit used to produce the reported results.
+
+The calibrated CERTA artifacts are released as a curated Hugging Face collection at \url{<HF-COLLECTION>}.
+The collection comprises 53 repositories spanning all eleven evaluated models and the full set of
+quantization configurations reported in this study, namely NF4 4-bit and \texttt{LLM.int8()} 8-bit for
+deployment and round-to-nearest 8-, 6- and 4-bit as numerical-precision evaluation variants. Each
+repository contains the CERTA certification layer for its model, that is, the calibrated marginal and
+class-conditional decision thresholds at every evaluated risk level, the machine-readable certificate with
+its finite-sample guarantee, and a self-contained serving handler that applies the certify-or-escalate
+policy and loads the deployable quantized checkpoint. The two quantization routes evaluated in the study,
+round-to-nearest and the \texttt{bitsandbytes} NF4 and \texttt{LLM.int8()}
+implementations~\cite{dettmers2023qlora,dettmers2022llmint8}, are included. To respect upstream licensing,
+CERTA does not re-host the original base-model weights; the released quantized checkpoints are derivative
+works, and each repository ships the applicable base-model license or licenses, an Apache-2.0 license for
+the CERTA-authored components, and an explicit record of the base model and its provenance.
+
+\section*{Data availability}
+
+The clinical accept/reject decisions analysed in this study were derived from de-identified patient
+summaries in the publicly available PMC-Patients corpus~\cite{zhao2023large}. External task validation
+used the publicly available BC5CDR-Disease~\cite{li2016bc5cdr} and NCBI-Disease~\cite{dogan2014ncbi}
+disease named-entity recognition benchmarks. The complete per-decision records underlying every reported
+result, comprising the reference-model decision, the quantized-model decision and the decision margin for
+each input and configuration, are released with the code above and regenerate all main-text and
+Supplementary results without any further model inference. The base-model checkpoints are publicly
+available from their original repositories and are listed, with their exact identifiers, in Supplementary
+Table~\ref{stab:inventory}. The in-house clinical verification pipeline that produced the accept/reject
+decisions is the subject of a separate forthcoming study and is not released here; the released
+per-decision records are nonetheless sufficient to reproduce every CERTA result reported in this work.
