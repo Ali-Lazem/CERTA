@@ -3,7 +3,7 @@
 **Do We Need the Largest LLMs for Every Clinical Decision?**
 
 Ali H. Lazem¹² and William J. Teahan¹
-¹ School of Computer Science and Electronic Engineering, Bangor University, UK
+¹ School of Computer Science and Engineering, Bangor University, UK
 ² Department of Computer Science, University of Thi-Qar, Iraq
 
 This repository contains the code, recorded model outputs, statistical pipeline, figures, release tooling, and manuscript sources for CERTA, a decision-level statistical certificate that determines when a quantized clinical language model may substitute for its full-precision (BF16) reference, and escalates the decisions it cannot certify back to that reference.
@@ -114,4 +114,4 @@ If you use this code or the recorded outputs, please cite the paper (see `CITATI
 
 ## Contact
 
-Ali H. Lazem — alazem@utq.edu.iq
+Ali H. Lazem — lhl23prg@bangor.ac.uk
