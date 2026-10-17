@@ -1,0 +1,391 @@
+{
+  "model": "openbiollm-70b",
+  "base_model": "aaditya/Llama3-OpenBioLLM-70B",
+  "certa_version": "1.0",
+  "task": "clinical accept/reject verification decision; thresholds calibrated on PMC-Patients",
+  "margin_definition": "abs(logit(YES) - logit(NO)) at the answer position",
+  "answer_tokens": {
+    "YES": "YES",
+    "NO": "NO"
+  },
+  "serve_rule": "serve the quantized decision if margin >= tau for its predicted class, else escalate to the full-precision reference",
+  "certificate": {
+    "type": "full-calibration operational",
+    "delta": 0.1,
+    "grid": 50,
+    "n_cal_decisions": 1250,
+    "n_patients_total": 2484
+  },
+  "IMPORTANT": "The certificate holds ONLY for this calibrated decision distribution; re-calibrate on your own data before relying on it for a different task or population. NF4 and INT8 reduce memory; round-to-nearest variants retain bfloat16 storage and are not memory-reducing. Escalated decisions require the full-precision reference to be reachable.",
+  "configs": {
+    "nf4": {
+      "quantizer": "bnb",
+      "bits": 4,
+      "deployable": true,
+      "alpha": {
+        "0.01": {
+          "marginal": {
+            "tau": 2.25,
+            "certified_coverage_pct": 85.44,
+            "escalation_pct": 14.56,
+            "cp_upper_pct": 0.9833,
+            "amortized_size_pct": 35.92,
+            "escalate_all": false
+          },
+          "class_conditional": {
+            "tau_yes": 3.0,
+            "tau_no": null,
+            "cov_yes_pct": 84.9829,
+            "cov_no_pct": 0.0,
+            "cp_yes_pct": 0.944,
+            "cp_no_pct": 100.0,
+            "escalation_pct": 20.32,
+            "amortized_size_pct": 40.24,
+            "escalate_all_yes": false,
+            "escalate_all_no": true
+          }
+        },
+        "0.05": {
+          "marginal": {
+            "tau": 0.3112,
+            "certified_coverage_pct": 98.08,
+            "escalation_pct": 1.92,
+            "cp_upper_pct": 4.712,
+            "amortized_size_pct": 26.44,
+            "escalate_all": false
+          },
+          "class_conditional": {
+            "tau_yes": 0.375,
+            "tau_no": null,
+            "cov_yes_pct": 98.7201,
+            "cov_no_pct": 0.0,
+            "cp_yes_pct": 4.3289,
+            "cp_no_pct": 100.0,
+            "escalation_pct": 7.44,
+            "amortized_size_pct": 30.58,
+            "escalate_all_yes": false,
+            "escalate_all_no": true
+          }
+        },
+        "0.10": {
+          "marginal": {
+            "tau": 0.0,
+            "certified_coverage_pct": 100.0,
+            "escalation_pct": 0.0,
+            "cp_upper_pct": 5.9569,
+            "amortized_size_pct": 25.0,
+            "escalate_all": false
+          },
+          "class_conditional": {
+            "tau_yes": 0.0,
+            "tau_no": null,
+            "cov_yes_pct": 100.0,
+            "cov_no_pct": 0.0,
+            "cp_yes_pct": 5.542,
+            "cp_no_pct": 100.0,
+            "escalation_pct": 6.24,
+            "amortized_size_pct": 29.68,
+            "escalate_all_yes": false,
+            "escalate_all_no": true
+          }
+        }
+      }
+    },
+    "int8": {
+      "quantizer": "bnb",
+      "bits": 8,
+      "deployable": true,
+      "alpha": {
+        "0.01": {
+          "marginal": {
+            "tau": null,
+            "certified_coverage_pct": 0.0,
+            "escalation_pct": 100.0,
+            "cp_upper_pct": 100.0,
+            "amortized_size_pct": 100.0,
+            "escalate_all": true
+          },
+          "class_conditional": {
+            "tau_yes": null,
+            "tau_no": null,
+            "cov_yes_pct": 0.0,
+            "cov_no_pct": 0.0,
+            "cp_yes_pct": 100.0,
+            "cp_no_pct": 100.0,
+            "escalation_pct": 100.0,
+            "amortized_size_pct": 100.0,
+            "escalate_all_yes": true,
+            "escalate_all_no": true
+          }
+        },
+        "0.05": {
+          "marginal": {
+            "tau": 5.125,
+            "certified_coverage_pct": 86.88,
+            "escalation_pct": 13.12,
+            "cp_upper_pct": 4.794,
+            "amortized_size_pct": 56.56,
+            "escalate_all": false
+          },
+          "class_conditional": {
+            "tau_yes": 5.125,
+            "tau_no": null,
+            "cov_yes_pct": 86.9496,
+            "cov_no_pct": 0.0,
+            "cp_yes_pct": 4.9451,
+            "cp_no_pct": 100.0,
+            "escalation_pct": 13.12,
+            "amortized_size_pct": 56.56,
+            "escalate_all_yes": false,
+            "escalate_all_no": true
+          }
+        },
+        "0.10": {
+          "marginal": {
+            "tau": 3.1224,
+            "certified_coverage_pct": 96.48,
+            "escalation_pct": 3.52,
+            "cp_upper_pct": 9.7632,
+            "amortized_size_pct": 51.76,
+            "escalate_all": false
+          },
+          "class_conditional": {
+            "tau_yes": 3.125,
+            "tau_no": null,
+            "cov_yes_pct": 96.5572,
+            "cov_no_pct": 0.0,
+            "cp_yes_pct": 9.9533,
+            "cp_no_pct": 100.0,
+            "escalation_pct": 3.52,
+            "amortized_size_pct": 51.76,
+            "escalate_all_yes": false,
+            "escalate_all_no": true
+          }
+        }
+      },
+      "note": "LLM.int8(); fails to load on some BF16-native 70B checkpoints (0% certified coverage there)"
+    },
+    "rtn4": {
+      "quantizer": "rtn",
+      "bits": 4,
+      "deployable": false,
+      "alpha": {
+        "0.01": {
+          "marginal": {
+            "tau": null,
+            "certified_coverage_pct": 0.0,
+            "escalation_pct": 100.0,
+            "cp_upper_pct": 100.0,
+            "amortized_size_pct": 100.0,
+            "escalate_all": true
+          },
+          "class_conditional": {
+            "tau_yes": null,
+            "tau_no": null,
+            "cov_yes_pct": 0.0,
+            "cov_no_pct": 0.0,
+            "cp_yes_pct": 100.0,
+            "cp_no_pct": 100.0,
+            "escalation_pct": 100.0,
+            "amortized_size_pct": 100.0,
+            "escalate_all_yes": true,
+            "escalate_all_no": true
+          }
+        },
+        "0.05": {
+          "marginal": {
+            "tau": 2.125,
+            "certified_coverage_pct": 84.72,
+            "escalation_pct": 15.28,
+            "cp_upper_pct": 4.6407,
+            "amortized_size_pct": 36.46,
+            "escalate_all": false
+          },
+          "class_conditional": {
+            "tau_yes": 2.3304,
+            "tau_no": null,
+            "cov_yes_pct": 86.4505,
+            "cov_no_pct": 0.0,
+            "cp_yes_pct": 4.6727,
+            "cp_no_pct": 100.0,
+            "escalation_pct": 16.8,
+            "amortized_size_pct": 37.6,
+            "escalate_all_yes": false,
+            "escalate_all_no": true
+          }
+        },
+        "0.10": {
+          "marginal": {
+            "tau": 0.625,
+            "certified_coverage_pct": 95.52,
+            "escalation_pct": 4.48,
+            "cp_upper_pct": 9.817,
+            "amortized_size_pct": 28.36,
+            "escalate_all": false
+          },
+          "class_conditional": {
+            "tau_yes": 0.5,
+            "tau_no": null,
+            "cov_yes_pct": 97.6725,
+            "cov_no_pct": 0.0,
+            "cp_yes_pct": 9.4258,
+            "cp_no_pct": 100.0,
+            "escalation_pct": 6.0,
+            "amortized_size_pct": 29.5,
+            "escalate_all_yes": false,
+            "escalate_all_no": true
+          }
+        }
+      },
+      "note": "round-to-nearest evaluation variant; retains bfloat16 storage, NOT memory-reducing"
+    },
+    "rtn6": {
+      "quantizer": "rtn",
+      "bits": 6,
+      "deployable": false,
+      "alpha": {
+        "0.01": {
+          "marginal": {
+            "tau": 0.75,
+            "certified_coverage_pct": 95.76,
+            "escalation_pct": 4.24,
+            "cp_upper_pct": 0.5275,
+            "amortized_size_pct": 40.15,
+            "escalate_all": false
+          },
+          "class_conditional": {
+            "tau_yes": 0.5,
+            "tau_no": null,
+            "cov_yes_pct": 98.3363,
+            "cov_no_pct": 0.0,
+            "cp_yes_pct": 0.6254,
+            "cp_no_pct": 100.0,
+            "escalation_pct": 10.16,
+            "amortized_size_pct": 43.85,
+            "escalate_all_yes": false,
+            "escalate_all_no": true
+          }
+        },
+        "0.05": {
+          "marginal": {
+            "tau": 0.0,
+            "certified_coverage_pct": 100.0,
+            "escalation_pct": 0.0,
+            "cp_upper_pct": 2.9107,
+            "amortized_size_pct": 37.5,
+            "escalate_all": false
+          },
+          "class_conditional": {
+            "tau_yes": 0.0,
+            "tau_no": null,
+            "cov_yes_pct": 100.0,
+            "cov_no_pct": 0.0,
+            "cp_yes_pct": 1.7394,
+            "cp_no_pct": 100.0,
+            "escalation_pct": 8.64,
+            "amortized_size_pct": 42.9,
+            "escalate_all_yes": false,
+            "escalate_all_no": true
+          }
+        },
+        "0.10": {
+          "marginal": {
+            "tau": 0.0,
+            "certified_coverage_pct": 100.0,
+            "escalation_pct": 0.0,
+            "cp_upper_pct": 2.9107,
+            "amortized_size_pct": 37.5,
+            "escalate_all": false
+          },
+          "class_conditional": {
+            "tau_yes": 0.0,
+            "tau_no": 0.625,
+            "cov_yes_pct": 100.0,
+            "cov_no_pct": 85.1852,
+            "cp_yes_pct": 1.7394,
+            "cp_no_pct": 9.036,
+            "escalation_pct": 1.28,
+            "amortized_size_pct": 38.3,
+            "escalate_all_yes": false,
+            "escalate_all_no": false
+          }
+        }
+      },
+      "note": "round-to-nearest evaluation variant; retains bfloat16 storage, NOT memory-reducing"
+    },
+    "rtn8": {
+      "quantizer": "rtn",
+      "bits": 8,
+      "deployable": false,
+      "alpha": {
+        "0.01": {
+          "marginal": {
+            "tau": 0.5,
+            "certified_coverage_pct": 96.8,
+            "escalation_pct": 3.2,
+            "cp_upper_pct": 0.7024,
+            "amortized_size_pct": 51.6,
+            "escalate_all": false
+          },
+          "class_conditional": {
+            "tau_yes": 0.875,
+            "tau_no": null,
+            "cov_yes_pct": 96.2931,
+            "cov_no_pct": 0.0,
+            "cp_yes_pct": 0.8378,
+            "cp_no_pct": 100.0,
+            "escalation_pct": 10.64,
+            "amortized_size_pct": 55.32,
+            "escalate_all_yes": false,
+            "escalate_all_no": true
+          }
+        },
+        "0.05": {
+          "marginal": {
+            "tau": 0.0,
+            "certified_coverage_pct": 100.0,
+            "escalation_pct": 0.0,
+            "cp_upper_pct": 2.5955,
+            "amortized_size_pct": 50.0,
+            "escalate_all": false
+          },
+          "class_conditional": {
+            "tau_yes": 0.0,
+            "tau_no": null,
+            "cov_yes_pct": 100.0,
+            "cov_no_pct": 0.0,
+            "cp_yes_pct": 2.8335,
+            "cp_no_pct": 100.0,
+            "escalation_pct": 7.2,
+            "amortized_size_pct": 53.6,
+            "escalate_all_yes": false,
+            "escalate_all_no": true
+          }
+        },
+        "0.10": {
+          "marginal": {
+            "tau": 0.0,
+            "certified_coverage_pct": 100.0,
+            "escalation_pct": 0.0,
+            "cp_upper_pct": 2.5955,
+            "amortized_size_pct": 50.0,
+            "escalate_all": false
+          },
+          "class_conditional": {
+            "tau_yes": 0.0,
+            "tau_no": 0.125,
+            "cov_yes_pct": 100.0,
+            "cov_no_pct": 100.0,
+            "cp_yes_pct": 2.8335,
+            "cp_no_pct": 8.305,
+            "escalation_pct": 0.0,
+            "amortized_size_pct": 50.0,
+            "escalate_all_yes": false,
+            "escalate_all_no": false
+          }
+        }
+      },
+      "note": "round-to-nearest evaluation variant; retains bfloat16 storage, NOT memory-reducing"
+    }
+  }
+}
