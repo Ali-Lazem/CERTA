@@ -1,0 +1,20 @@
+name: certa
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - pip
+  - pip:
+      - transformers
+      - accelerate
+      - bitsandbytes
+      - sentencepiece
+      - huggingface_hub>=0.24
+# The certificate and the analysis pipeline (certa/, scripts/) need only python + numpy/scipy/pandas/matplotlib.
+# transformers/accelerate/bitsandbytes/sentencepiece are required only to run or quantize the models
+# (benchmarks/, release/, slurm/), and need a CUDA GPU.
+# For an exact, pinned environment, regenerate requirements-lock.txt on the run machine (see that file).
