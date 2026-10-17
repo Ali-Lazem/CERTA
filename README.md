@@ -14,7 +14,7 @@ CERTA is a decision-level statistical certificate that determines when a quantiz
 
 - **Paper:** `<PAPER-URL>`
 - **Model collection (Hugging Face):** `(https://huggingface.co/collections/lazem/certa-certified-compression-for-clinical-decisions-6ad373efa6e143550bc15848)`
-- **Archived snapshot (Zenodo):** `<(https://doi.org/10.5281/zenodo.23435475)>`
+- **Archived snapshot (Zenodo):** `(https://doi.org/10.5281/zenodo.23435475)`
 
 ---
 
