@@ -13,8 +13,8 @@ Ali H. Lazem¹² and William J. Teahan¹
 CERTA is a decision-level statistical certificate that determines when a quantized clinical language model may substitute for its full-precision (BF16) reference, and escalates the decisions it cannot certify back to that reference. This repository holds the complete analysis pipeline, the recorded per-decision model outputs, the figure and table sources, the reproducibility tests, and the Hugging Face release tooling. The paper and Supplementary Information are hosted separately and linked below.
 
 - **Paper:** `<PAPER-URL>`
-- **Model collection (Hugging Face):** `[<HF-COLLECTION-URL>](https://huggingface.co/collections/lazem/certa-certified-compression-for-clinical-decisions-6ad373efa6e143550bc15848)`
-- **Archived snapshot (Zenodo):** `[<ZENODO-DOI>](https://doi.org/10.5281/zenodo.23435475)`
+- **Model collection (Hugging Face):** `(https://huggingface.co/collections/lazem/certa-certified-compression-for-clinical-decisions-6ad373efa6e143550bc15848)`
+- **Archived snapshot (Zenodo):** `<(https://doi.org/10.5281/zenodo.23435475)>`
 
 ---
 
