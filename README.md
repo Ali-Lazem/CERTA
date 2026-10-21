@@ -1,21 +1,23 @@
 # CERTA — Certify-or-Escalate for Clinical LLM Compression
 
 ### Decision-level statistical certification for quantized clinical language models
-[![arXiv](https://img.shields.io/badge/arXiv-XXXX.XXXXX-b31b1b.svg)](https://arxiv.org/abs/XXXX.XXXXX)
+
+[![arXiv](https://img.shields.io/badge/arXiv-2610.26937-b31b1b.svg)](https://arxiv.org/abs/2610.26937)
 [![DOI](https://zenodo.org/badge/1342678081.svg)](https://doi.org/10.5281/zenodo.23435475)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-ffcc00.svg)](https://huggingface.co/collections/lazem/certa-certified-compression-for-clinical-decisions-6ad373efa6e143550bc15848)
 [![Paper](https://img.shields.io/badge/paper-under%20review-lightgrey.svg)](#citation)
 
-Ali H. Lazem¹² and William J. Teahan¹
-¹ School of Computer Science and Electronic Engineering, Bangor University, UK
+Ali H. Lazem¹² and William J. Teahan¹  
+¹ School of Computer Science and Electronic Engineering, Bangor University, UK  
 ² Department of Computer Science, University of Thi-Qar, Iraq
 
 CERTA is a decision-level statistical certificate that determines when a quantized clinical language model may substitute for its full-precision (BF16) reference, and escalates the decisions it cannot certify back to that reference. This repository holds the complete analysis pipeline, the recorded per-decision model outputs, the figure and table sources, the reproducibility tests, and the Hugging Face release tooling. The paper and Supplementary Information are hosted separately and linked below.
 
-- **Paper:** `<PAPER-URL>`
-- **Model collection (Hugging Face):** `(https://huggingface.co/collections/lazem/certa-certified-compression-for-clinical-decisions-6ad373efa6e143550bc15848)`
-- **Archived snapshot (Zenodo):** `(https://doi.org/10.5281/zenodo.23435475)`
+- **Paper (arXiv preprint):** https://arxiv.org/abs/2610.26937
+- **Model collection (Hugging Face):** https://huggingface.co/collections/lazem/certa-certified-compression-for-clinical-decisions-6ad373efa6e143550bc15848
+- **Archived snapshot (Zenodo):** https://doi.org/10.5281/zenodo.23435475
 
 ---
 
