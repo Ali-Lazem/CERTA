@@ -122,7 +122,21 @@ group into the collection) and `slurm/` (GPU-side weight quantization). See `src
 ---
 
 ## Citation
+## Citation
 
+```bibtex
+@article{lazem2026we,
+  title         = {Do We Need the Largest LLMs for Every Clinical Decision?},
+  author        = {Lazem, Ali H. and Teahan, William J.},
+  journal       = {arXiv preprint arXiv:2610.26937},
+  year          = {2026},
+  eprint        = {2610.26937},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL}
+}
+```
+
+See [`CITATION.cff`](CITATION.cff) for machine-readable metadata.
 If you use this code or the recorded outputs, please cite the paper (see `CITATION.cff`) and the PMC-Patients dataset:
 
 > Zhao et al. *PMC-Patients: A Large-scale Dataset of Patient Summaries and Relations for Benchmarking Retrieval-based Clinical Decision Support Systems.* 2023.
