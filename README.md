@@ -122,7 +122,6 @@ group into the collection) and `slurm/` (GPU-side weight quantization). See `src
 ---
 
 ## Citation
-## Citation
 
 ```bibtex
 @article{lazem2026we,
