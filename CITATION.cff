@@ -6,11 +6,11 @@ authors:
   - family-names: "Lazem"
     given-names: "Ali H."
     affiliation: "Bangor University; University of Thi-Qar"
-    email: alazem@utq.edu.iq
+    email: lhl23prg@bangor.ac.uk; alazem@utq.edu.iq
   - family-names: "Teahan"
     given-names: "William J."
     affiliation: "Bangor University"
-repository-code: "https://github.com/USERNAME/certa"
+repository-code: "https://github.com/Ali-Lazem/certa"
 license: MIT
 keywords:
   - clinical decision support
