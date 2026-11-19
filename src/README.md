@@ -22,6 +22,7 @@ python src/build_si_figures.py  # -> figS1.pdf .. figS6.pdf
 | `si_compute2.py` | Patient-clustered bootstrap 95% CIs, class-specific calibration resolution, prevalence maxima, pooled certified/escalated margin ECDFs → `si_add.pkl`. |
 | `si_compute3.py` | Escalation mechanism (resolution- vs risk-limited), threshold-grid sensitivity, repeated patient-disjoint split stability, class-conditional δ/α sensitivity → `si_add3.pkl`. |
 | `si_tables.py` | Emits every Supplementary table macro to `si_tables.tex` from the three pickles. |
+| `ablation_feature_sets.py` | Feature ablation for the learned substitution-risk score. |
 | `build_figures.py` | Main-text figures fig2–fig5 (all numbers recomputed from `certa_core`, none hardcoded). |
 | `build_si_figures.py` | Supplementary figures figS1–figS6. |
 | `inference/` | Prompt construction, GPU inference, and external NER benchmarking. See `inference/README.md`. Only needed to regenerate `data/verify/` from scratch. |
