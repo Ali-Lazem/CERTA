@@ -20,7 +20,7 @@ One file per model per quantizer family (11 models × {`bnb`, `rtn`} = 22 files)
 
 A disagreement (the error event the certificate bounds) is `d != ref_d`. The margin is the compressed model's confidence signal used as the certificate score.
 
-## 'prompts.jsonl`
+## prompts.jsonl
 
 2,500 lines, one JSON object per decision: {"uid": ..., "task": "ner"|"qar", "system": ..., "user": ..., "nwords": <int>}. uid maps to a PMC-Patients patient id (<patient>-<n>); patients with more than one decision share a uid prefix, which is what the patient-disjoint split and patient-clustered bootstrap key on. system and user are the verifier prompt (the patient context, the candidate and the verification question); nwords is the user length in whitespace-separated tokens, the length feature used by the learned-score analysis (src/ablation_feature_sets.py). The system/user text derives from PMC-Patients and is redistributed under CC BY-NC-SA 4.0 (attribution, non-commercial, share-alike; see ../LICENSE-DATA.md).
 ## Derived CSVs
