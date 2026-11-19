@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Feature ablation for the learned substitution-risk score -- CPU ONLY, no model inference.
 
-Answers the deployability question raised in review: does a learned score that uses ONLY
+does a learned score that uses ONLY
 NF4-available signals (no auxiliary INT8 pass) beat the decision margin, and is the gain stable
 across patient-disjoint re-splits?
 
